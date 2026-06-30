@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://aixegy.com/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aixegy.com/ar" />
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/features</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aixegy.com/ar/features" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/use-cases</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aixegy.com/ar/use-cases" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/about</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aixegy.com/ar/about" />
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aixegy.com/ar/contact" />
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/get-started</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aixegy.com/ar/get-started" />
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aixegy.com/ar/privacy" />
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/terms</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aixegy.com/ar/terms" />
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/dpa</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aixegy.com/ar/dpa" />
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/ar</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aixegy.com/" />
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/ar/features</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aixegy.com/features" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/ar/use-cases</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aixegy.com/use-cases" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/ar/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aixegy.com/about" />
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/ar/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aixegy.com/contact" />
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/ar/get-started</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aixegy.com/get-started" />
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/ar/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aixegy.com/privacy" />
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/ar/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aixegy.com/terms" />
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aixegy.com/ar/dpa</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aixegy.com/dpa" />
+    <priority>0.3</priority>
+  </url>
+</urlset>
