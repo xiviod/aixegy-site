@@ -1,0 +1,79 @@
+name: Uptime check
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  issues: write
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check endpoints
+        id: check
+        run: |
+          failures=""
+          check() {
+            local name="$1" url="$2"
+            # 3 attempts, 10s timeout each: one blip should not page anyone.
+            for i in 1 2 3; do
+              code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$url" || echo "000")
+              if [ "$code" = "200" ]; then
+                echo "OK   $name ($url) -> $code"
+                return 0
+              fi
+              sleep 15
+            done
+            echo "FAIL $name ($url) -> $code"
+            failures="${failures}${name} (${url}) returned ${code}\n"
+            return 0
+          }
+          check "Dashboard" "https://app.aixegy.com/"
+          check "API"       "https://app.aixegy.com/docs"
+          check "Marketing" "https://aixegy.com/"
+          if [ -n "$failures" ]; then
+            {
+              echo "failures<<EOF"
+              printf "%b" "$failures"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+            echo "down=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "down=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open or update alert issue
+        if: steps.check.outputs.down == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FAILURES: ${{ steps.check.outputs.failures }}
+        run: |
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --label uptime --json number -q '.[0].number')
+          body="Uptime check failed at $(date -u +'%Y-%m-%d %H:%M UTC'):
+
+          $FAILURES
+
+          Each endpoint was tried 3 times (10s timeout) before alerting.
+          Runbook: SSH to the box, 'docker ps' + 'docker logs', then 'nginx -s reload' after any recreate."
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" \
+              --title "Uptime: endpoint check failing" \
+              --label uptime \
+              --body "$body"
+          fi
+
+      - name: Auto-close alert when recovered
+        if: steps.check.outputs.down == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --label uptime --json number -q '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue close "$existing" --repo "$GITHUB_REPOSITORY" \
+              --comment "Recovered: all endpoints returning 200 at $(date -u +'%Y-%m-%d %H:%M UTC')."
+          fi
